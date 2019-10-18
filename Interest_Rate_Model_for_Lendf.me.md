@@ -13,8 +13,9 @@ The equations that we use on LENDF.ME for interest rate are similar as the follo
 
 Lending interest rate is calculated based on the borrowing interest rate, the equation is as follows:
 
-Lending Interest Rate = Borrow Interest Rate * Utilization Rate * 0.95
-5% of the lending rate is sent backing to lendf.me asset pool.
+### *Lending Interest Rate = Borrow Interest Rate * Utilization Rate * 0.95*
+
+*5% of the lending rate is sent backing to lendf.me asset pool.*
 
 You can retrieve real time interest rate of supplying and borrowing by call moneymarket contract function, named “markets()”, here is the description,
 
@@ -43,6 +44,7 @@ You can retrieve real time interest rate of supplying and borrowing by call mone
   *uint borrowRateMantissa: borrowinterest rate in one block cycle.*
   
   *uint borrowIndex: index of borrow interest;*
+
 
 
 The contract in Mainnet is: *[0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea](https://etherscan.io/address/0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea)*
