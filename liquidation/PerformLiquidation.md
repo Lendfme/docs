@@ -39,7 +39,7 @@ _Notice: In order to support USDx contract, we make a little change in the Liqui
 
 For the contract of `lendf.me`, user account and related information are stored in a `mapping`, we can not get them directly, so, we provide an API: [https://api.lendf.me/v1/account?pageNumber=1&pageSize=50](https://api.lendf.me/v1/account?pageNumber=1&pageSize=50) to get all user information. When we try to visit this API, we will get the data like below:
 
-```json
+```
 {
   "accounts":[
     {
