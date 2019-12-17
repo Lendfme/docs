@@ -44,35 +44,35 @@ For the contract of `lendf.me`, user account and related information are stored 
   "accounts":[
     {
       "address":"0xcd63d37a4b28b55932611c7ab0c35ce63d729341",  //account address
-      "total_supply_weth":90.239874928734,   //Total amount of collateral converted into WETH
-      "total_borrow_weth":80.904234234,      //Total amount of borrowing converted into WETH
-      "shortfall_weth":3.223094823,          //Total amount of assets gap converted into WETH
+      "total_supply_weth":90239874928734,   //Total amount of collateral converted into WETH
+      "total_borrow_weth":80904234234,      //Total amount of borrowing converted into WETH
+      "shortfall_weth":3223094823,          //Total amount of assets gap converted into WETH
       "borrow":[ //borrowing detail
         {
           "asset":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",      //borrow asset contract address
-          "amount":10.98739574      //borrowing amount(including interest)
+          "amount":1098739574      //borrowing amount(including interest)
         },
         {
           "asset":"0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //borrow asset contract address
-          "amount":800.904234234   //borrowing amount(including interest)
+          "amount":800904234234   //borrowing amount(including interest)
         },
         {
           "asset":"0xdac17f958d2ee523a2206206994597c13d831ec7 ",     //borrow asset contract address
-          "amount":0.00           //borrowing amount(including interest)
+          "amount":0          //borrowing amount(including interest)
         }
       ],
       "supply":[ //collateral detail
         {
           "asset":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",     //collateral asset contract address
-          "amount":80.904234234     //collateral amount(including interest)
+          "amount":80904234234     //collateral amount(including interest)
         },
         {
           "asset":"0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //collateral asset contract address
-          "amount":100.98739574    //collateral amount(including interest)
+          "amount":10098739574    //collateral amount(including interest)
         },
         {
           "asset":"0xdac17f958d2ee523a2206206994597c13d831ec7 ",    //collateral asset contract address
-          "amount":0.00           //collateral amount(including interest)
+          "amount":0          //collateral amount(including interest)
         }
       ]
     }
@@ -105,7 +105,7 @@ _Notice:The asset that user wants to liquidate must approve to the `Liquidator.s
 Calculate liquidation quantity equation:
 
 ```js
-liquidateAmountWETH = shortfall_weth / (1 + liquidationDiscount - collateralRatio)
+liquidateAmountWETH = Math.abs(shortfall_weth / (10**18 + liquidationDiscount - collateralRatio))
 requestAmount = min(borrowAmount, Math.floor(liquidateAmountWETH * 10**36 / assetBorrowPrice))
 ```
 
