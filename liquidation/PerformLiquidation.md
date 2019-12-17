@@ -111,7 +111,7 @@ requestAmount = min(borrowAmount, Math.floor(liquidateAmountWETH * 10**36 / asse
 
 _Notice: you can get **liquidationDiscount**，**collateralRatio**，**assetBorrowPrice** from a public API：[https://api.lendf.me/v1/info?data=markets](https://api.lendf.me/v1/info?data=markets), you will get data like below:_
 
-```json
+```
 {
   "markets": {
     "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549": {
@@ -160,7 +160,7 @@ uint(err), uint(info)
 
 type `Error` defined as below:
 
-```json
+```
 enum Error {
     NO_ERROR,
     OPAQUE_ERROR,
@@ -193,7 +193,7 @@ enum Error {
 
 type `FailureInfo ` defined as below:
 
-```json
+```
 enum FailureInfo {
     ACCEPT_ADMIN_PENDING_ADMIN_CHECK,
     BORROW_ACCOUNT_LIQUIDITY_CALCULATION_FAILED,
