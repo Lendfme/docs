@@ -43,36 +43,37 @@ For the contract of `lendf.me`, user account and related information are stored 
 {
   "accounts":[
     {
-      "address":"0xcd63d37a4b28b55932611c7ab0c35ce63d729341",  //account address
-      "total_supply_weth":90239874928734,   //Total amount of collateral converted into WETH
-      "total_borrow_weth":80904234234,      //Total amount of borrowing converted into WETH
-      "shortfall_weth":3223094823,          //Total amount of assets gap converted into WETH
+      "address": "0xcd63d37a4b28b55932611c7ab0c35ce63d729341",  //account address
+      "total_supply_weth": "90239874928734",   //Total amount of collateral converted into WETH
+      "total_borrow_weth": "80904234234",      //Total amount of borrowing converted into WETH
+      "shortfall_weth": "3223094823",          //Total amount of assets gap converted into WETH
+      "collateral_rate": "0.008177043018522064", //collateral rate, if it is more than 1.25, it means your account is safe
       "borrow":[ //borrowing detail
         {
-          "asset":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",      //borrow asset contract address
-          "amount":1098739574      //borrowing amount(including interest)
+          "asset": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",      //borrow asset contract address
+          "amount": "1098739574"      //borrowing amount(including interest)
         },
         {
-          "asset":"0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //borrow asset contract address
-          "amount":800904234234   //borrowing amount(including interest)
+          "asset": "0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //borrow asset contract address
+          "amount": "800904234234"   //borrowing amount(including interest)
         },
         {
-          "asset":"0xdac17f958d2ee523a2206206994597c13d831ec7 ",     //borrow asset contract address
-          "amount":0          //borrowing amount(including interest)
+          "asset": "0xdac17f958d2ee523a2206206994597c13d831ec7 ",     //borrow asset contract address
+          "amount": "0"          //borrowing amount(including interest)
         }
       ],
       "supply":[ //collateral detail
         {
-          "asset":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",     //collateral asset contract address
-          "amount":80904234234     //collateral amount(including interest)
+          "asset": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",     //collateral asset contract address
+          "amount": "80904234234"     //collateral amount(including interest)
         },
         {
-          "asset":"0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //collateral asset contract address
-          "amount":10098739574    //collateral amount(including interest)
+          "asset": "0xeb269732ab75a6fd61ea60b06fe994cd32a83549",     //collateral asset contract address
+          "amount": "10098739574"    //collateral amount(including interest)
         },
         {
-          "asset":"0xdac17f958d2ee523a2206206994597c13d831ec7 ",    //collateral asset contract address
-          "amount":0          //collateral amount(including interest)
+          "asset": "0xdac17f958d2ee523a2206206994597c13d831ec7 ",    //collateral asset contract address
+          "amount": "0"          //collateral amount(including interest)
         }
       ]
     }
@@ -101,44 +102,16 @@ function liquidateBorrow(
 
 _Notice:The asset that user wants to liquidate must approve to the `Liquidator.sol` contract at first._
 
+You can get `requestedAmountClose` by visiting our public API with variables `targetAccount`, `assetBorrow`, `assetCollateral`, such as: [https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&assetCollateral=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549](https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&assetCollateral=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549)
 
-Calculate liquidation quantity equation:
-
-```js
-liquidateAmountWETH = Math.abs(shortfall_weth / (10**18 + liquidationDiscount - collateralRatio))
-requestAmount = min(borrowAmount, Math.floor(liquidateAmountWETH * 10**36 / assetBorrowPrice))
-```
-
-_Notice: you can get **liquidationDiscount**，**collateralRatio**，**assetBorrowPrice** from a public API：[https://api.lendf.me/v1/info?data=markets](https://api.lendf.me/v1/info?data=markets), you will get data like below:_
+you will get data like below:
 
 ```
 {
-  "markets": {
-    "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549": {
-      "totalSupply": "1360208.437700236478196875",
-      "supplyAPR": "0.0875389028249664",
-      "totalBorrows": "1145573.948519337448510951",
-      "borrowAPR": "0.1051465462416288",
-      "price": "0.007035218302823936"
-    },
-    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
-      "totalSupply": "17512.101909007777045487",
-      "supplyAPR": "0.000518174575488",
-      "totalBorrows": "900.45",
-      "borrowAPR": "0.0102834776914848",
-      "price": "1.00"
-    },
-    "0xdAC17F958D2ee523a2206206994597C13D831ec7": {
-      "totalSupply": "613213.338406",
-      "supplyAPR": "0.032130714308112",
-      "totalBorrows": "380197.237734",
-      "borrowAPR": "0.0575915863108896",
-      "price": "0.007037842479009634"
-    }
-  },
-  "collateralRatio": "1250000000000000000",
-  "originationFee": "500000000000000",
-  "liquidationDiscount": "100000000000000000"
+  "targetAccount": 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea,
+  "assetBorrow": 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2,
+  "assetCollateral": 0xeb269732ab75A6fD61Ea60b06fE994cD32a83549,
+  "maxClosed": "1000000000000000000"
 }
 ```
 
