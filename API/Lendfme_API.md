@@ -69,29 +69,81 @@ none
 
 ```
 {
-  "markets": {
-    "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549": {
+  "markets": [
+    {
+      "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
       "symbol": "USDx",
       "decimal": 18,
-      "totalSupply": "1375683.923234411593509296",
-      "supplyAPR": "0.08299309236552",
-      "totalBorrows": "1141769.522567662438590368",
-      "borrowAPR": "0.1013605489469088",
-      "price": "0.007607108081791626"
+      "blockNumber": 9168593,
+      "totalSupplyRaw": "1446840642874118566820740",
+      "totalSupply": "1446840.64287411856682074",
+      "totalSupplyUSD": "1446840.64287411856682074",
+      "supplyAPR": "0.0816262286380992",
+      "totalBorrowRaw": "1195049071178813034553478",
+      "totalBorrow": "1195049.071178813034553478",
+      "totalBorrowUSD": "1195049.071178813034553478",
+      "borrowAPR": "0.1002177881255232",
+      "oraclePrice": "8039877793857533",
+      "price": "1000000000000000000"
     },
-    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
+    {
+      "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       "symbol": "WETH",
       "decimal": 18,
-      "totalSupply": "23807.064736629981159866",
-      "supplyAPR": "0.0000000003237696",
-      "totalBorrows": "0.969722037834154025",
-      "borrowAPR": "0.0000081462092256",
-      "price": "1.00"
+      "blockNumber": 9160112,
+      "totalSupplyRaw": "25107117730666635275747",
+      "totalSupply": "25107.117730666635275747",
+      "totalSupplyUSD": "3122823.303340316237560959",
+      "supplyAPR": "0.0019464442497216",
+      "totalBorrowRaw": "2502219722037834154025",
+      "totalBorrow": "2502.219722037834154025",
+      "totalBorrowUSD": "311226.089027065826225967",
+      "borrowAPR": "0.0199307180104992",
+      "oraclePrice": "1000000000000000000",
+      "price": "124380000000000005654"
+    },
+    {
+      "asset": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "symbol": "USDT",
+      "decimal": 6,
+      "blockNumber": 9169941,
+      "totalSupplyRaw": "853182047781",
+      "totalSupply": "853182.047781",
+      "totalSupplyUSD": "851607.279536158997068811",
+      "supplyAPR": "0.0708765744479616",
+      "totalBorrowRaw": "677537273038",
+      "totalBorrow": "677537.273038",
+      "totalBorrowUSD": "676286.702676080845382312",
+      "borrowAPR": "0.0911099802445632",
+      "oraclePrice": "8025038118931064000000000000",
+      "price": "998154241232645785696091806436"
+    },
+    {
+      "asset": "0x3212b29E33587A00FB1C83346f5dBFA69A458923",
+      "symbol": "imBTC",
+      "decimal": 8,
+      "blockNumber": 9169757,
+      "totalSupplyRaw": "9000000",
+      "totalSupply": "0.09",
+      "totalSupplyUSD": "645.608166560932032341",
+      "supplyAPR": "0.002421904334976",
+      "totalBorrowRaw": "1000500",
+      "totalBorrow": "0.010005",
+      "totalBorrowUSD": "71.770107849356944261",
+      "borrowAPR": "0.0222320982162528",
+      "oraclePrice": "576734529096256992900000000000",
+      "price": "71734240728992448037940583539996"
     }
-  },
+  ],
+  "totalSupplyBalance": "43591.54875315287415181309463878830963442",
+  "totalSupplyBalanceUSD": "5421916.833917154733482851",
+  "totalBorrowBalance": "17548.107678001358448974879403073801649774",
+  "totalBorrowBalanceUSD": "2182633.63298980906310602",
+  "totalCollateralizationRatio": "2.484116780739844033",
+  "userCount": 130,
   "collateralRatio": "1250000000000000000",
-  "originationFee": "500000000000000",
-  "liquidationDiscount": "100000000000000000"
+  "liquidationDiscount": "100000000000000000",
+  "originationFee": "500000000000000"
 }
 ```
 
@@ -166,7 +218,7 @@ GET
 
 **Request url**
 
-> [https://api.lendf.me/v1/info?data=liquidateBorrow&address=all]()
+> [https://api.lendf.me/v1/info?data=liquidateBorrow&address=all](https://api.lendf.me/v1/info?data=liquidateBorrow&address=all)
 
 **Response:**
 
@@ -174,29 +226,29 @@ GET
 {
   "data": [
     {
-      "transactionHash": "0x5157e2177e34e6baf160a1bedd053f36a031d5936c0e60eeaf65a5a05379d0cb",
-      "blockNumber": 9125606,
-      "targetAccount": "0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA",
+      "transactionHash": "0x5782dbc0bdc750b2ce2f1e5b999af84b3e38049e60bca9b8967354548d5527f1",
+      "blockNumber": 9154419,
+      "targetAccount": "0x1Ff27A24A83AF6f99F1108f0E59946b183D63C96",
       "liquidator": "0x932906251479106D96904184aA4985C1a291B35d",
       "assetBorrow": {
         "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
         "symbol": "USDx",
         "decimal": 18,
-        "borrowBalanceBefore": "0.042607990732737117",
-        "borrowBalanceAccumulated": "0.042746035328543172",
-        "amountRepaid": "0.01",
-        "borrowBalanceAfter": "0.032746035328543172"
+        "borrowBalanceBefore": "0.001159121818411891",
+        "borrowBalanceAccumulated": "0.001188125250888974",
+        "amountRepaid": "0.000953282337615487",
+        "borrowBalanceAfter": "0.000234842913273487"
       },
       "assetCollateral": {
         "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
         "symbol": "WETH",
         "decimal": 18,
-        "collateralBalanceBefore": "0.000357795210611359",
-        "collateralBalanceAccumulated": "0.000357797776186854",
-        "amountSeized": "0.000089920706286274",
-        "collateralBalanceAfter": "0.00026787706990058"
+        "collateralBalanceBefore": "0.000008456554990961",
+        "collateralBalanceAccumulated": "0.000008456652785258",
+        "amountSeized": "0.000008182681009574",
+        "collateralBalanceAfter": "0.000000273971775684"
       }
-    }
+    },
   ],
   "size": 1,
   "total": 1
@@ -295,21 +347,21 @@ GET
 {
   "accounts": [
     {
-      "address": "0xA89BC2a9FE859A9367010429aCcfF192bCA33891",
-      "totalSupplyWeth": "0.000028139995325289",
-      "totalSupplyUSD": "0.003737272779151632",
-      "totalBorrowWeth": "0.000030996561728117481242375236649517",
-      "totalBorrowUSD": "0.004116653363111283",
-      "shortfallWeth": "0.000010605706834857851552969045811896",
-      "collateralRate": 0.9078424753079228,
+      "address": "0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA",
+      "totalSupplyWeth": "0.00000000000014923",
+      "totalSupplyUSD": "0.000000000018561227",
+      "totalBorrowWeth": "0.000012738548793649074834959278224376",
+      "totalBorrowUSD": "0.001584420698954072",
+      "shortfallWeth": "0.00001592318584283134354369909778047",
+      "collateralRate": 1.1714835215326886e-8,
       "borrow": [
         {
           "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
           "symbol": "USDx",
           "decimal": 18,
-          "oraclePrice": "0.007529553497477599",
-          "amount": "0.004116653363111283",
-          "USDValue": "0.004116653363111283",
+          "oraclePrice": "0.008039877793857533",
+          "amount": "0.001584420698954072",
+          "USDValue": "0.001584420698954072",
           "price": "1.00"
         }
       ],
@@ -319,19 +371,19 @@ GET
           "symbol": "WETH",
           "decimal": 18,
           "oraclePrice": "1.00",
-          "amount": "0.000028139995325289",
-          "USDValue": "0.003737272779151632",
-          "price": "132.810000000000010201"
+          "amount": "0.00000000000014923",
+          "USDValue": "0.000000000018561227",
+          "price": "124.380000000000005654"
         }
       ]
-    }
+    },
   ],
   "request": {
-    "blockNumber": 9150625,
-    "pageSize": 10,
+    "blockNumber": 9169935,
+    "pageSize": 50,
     "pageNumber": 1,
-    "totalSize": 16,
-    "totalPageNumber": 2
+    "totalSize": 1,
+    "totalPageNumber": 1
   }
 }
 ```
@@ -410,26 +462,26 @@ GET
 
 ```
 {
-  "targetAccount": "0xA89BC2a9FE859A9367010429aCcfF192bCA33891",
+  "targetAccount": "0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA",
   "assetBorrow": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
   "assetCollateral": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   "maxClose": {
     "symbol": "USDx",
     "decimal": 18,
-    "oraclePrice": "7607108081791626",
-    "amountRaw": "3362882932255269",
-    "amount": "0.003362882932255269",
-    "USDValue": "0.003362882932255269",
+    "oraclePrice": "8039877793857533",
+    "amountRaw": "16873843",
+    "amount": "0.000000000016873843",
+    "USDValue": "0.000000000016873843",
     "price": "1.00"
   },
   "amountSeize": {
     "symbol": "WETH",
     "decimal": 18,
     "oraclePrice": "1000000000000000000",
-    "amountRaw": "28139995325285",
-    "amount": "0.000028139995325285",
-    "USDValue": "0.003699171225480665",
-    "price": "131.456000000000001648"
+    "amountRaw": "149229",
+    "amount": "0.000000000000149229",
+    "USDValue": "0.000000000018561103",
+    "price": "124.380000000000005654"
   }
 }
 ```
