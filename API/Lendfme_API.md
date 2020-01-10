@@ -1,4 +1,4 @@
-_**Notice: Our API document is still being edited, so if you want to use our API, please pay attention to our changes, the final stable version will be determined in 45 days from now on(2019-12-20).**_
+_**Notice: Our API document is still being edited, so if you want to use our API, please pay attention to our changes, the final stable version will be determined in 50 days from now on(20th Dec,2019)，that is around 10th Feb,2020.**_
 
 <hr>
 
@@ -22,6 +22,7 @@ If you have any questions or feedback, you can open an issue at [our github repo
 
 > get market information
 
+
 **Url**
 
 > [https://api.lendf.me/v1/info?data=markets](https://api.lendf.me/v1/info?data=markets)
@@ -40,24 +41,42 @@ none
 
 **Response Result**
 
-| field               | type   | description                 |
-| ------------------- | ------ | --------------------------- |
-| markets             | object | List all assets information |
-| collateralRatio     | string | Asset collateral ratio      |
-| originationFee      | string | Borrowing fee               |
-| liquidationDiscount | string | Liquidation discount        |
+| field                       | type   | description                           |
+| --------------------------- | ------ | ------------------------------------  |
+| markets                     | object | List all assets information           |
+| totalSupplyBalance          | string | Total supply balance of all asset markets in ETH |
+| totalSupplyBalanceUSD       | string | Total supply balance of all asset markets in USD |
+| totalBorrowBalance          | string | Total borrow balance of all asset markets in ETH |
+| totalBorrowBalanceUSD       | string | Total borrow balance of all asset markets in USD |
+| totalCollateralizationRatio | string | Collateral ratio of all asset markets |
+| userCount                   | int    | Total current users                   |
+| collateralRatio             | string | Asset collateral ratio                |
+| originationFee              | string | Borrowing fee                         |
+| liquidationDiscount         | string | Liquidation discount                  |
 
 **_markets details_**
 
-| name        | type   | description                               |
-| ----------- | ------ | ----------------------------------------- |
-| symbol      | string | The symbol of the asset                   |
-| decimal     | int    | The number of decimals used for the asset |
-| totalSupply | string | Total amount of this asset supplied       |
-| supplyAPR   | string | Supply annualized interest rate           |
-| totalBorrow | string | Total amount of this asset borrowed       |
-| borrowAPR   | string | Borrow annualized interest rate           |
-| price       | string | The price of the asset relative to ETH    |
+| name            | type   | description                                |
+| --------------- | ------ | -----------------------------------------  |
+| asset           | string | The address of the asset                   |
+| name            | string | The name of the asset                      |
+| symbol          | string | The symbol of the asset                    |
+| decimal         | int    | The number of decimals used for the asset  |
+| balance         | string | The number of supplying for the asset      |
+| blockNumber     | int    | The block number of last time updating for market details |
+| totalSupplyRaw  | string | Total amount of this asset supplied in Wei |
+| totalSupply     | string | Total amount of this asset supplied in ETH |
+| totalSupplyUSD  | string | Total amount of this asset supplied in USD |
+| supplyAPR       | string | Supply annualized interest rate            |
+| grossSupplyRaw  | string | Gross supply balance in Wei                |
+| grossSupplyUSD  | string | Gross supply balance in USD.               |
+| utilizationRate | string | Utilization rate(totalBorrowRaw / grossSupplyRaw)|
+| totalBorrowRaw | string | Total amount of this asset borrowed in Wei |
+| totalBorrow    | string | Total amount of this asset borrowed in ETH |
+| totalBorrowUSD | string | Total amount of this asset borrowed in USD |
+| borrowAPR      | string | Borrow annualized interest rate            |
+| oraclePrice    | string | The price of the asset relative to Wei     |
+| price          | string | The price of the asset relative to USD     |
 
 **Example:**
 
@@ -72,78 +91,98 @@ none
   "markets": [
     {
       "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
+      "name": "dForce",
       "symbol": "USDx",
       "decimal": 18,
-      "blockNumber": 9168593,
-      "totalSupplyRaw": "1446840642874118566820740",
-      "totalSupply": "1446840.64287411856682074",
-      "totalSupplyUSD": "1446840.64287411856682074",
-      "supplyAPR": "0.0816262286380992",
-      "totalBorrowRaw": "1195049071178813034553478",
-      "totalBorrow": "1195049.071178813034553478",
-      "totalBorrowUSD": "1195049.071178813034553478",
-      "borrowAPR": "0.1002177881255232",
-      "oraclePrice": "8039877793857533",
-      "price": "1000000000000000000"
+      "balance": "300756278713149900416366",
+      "blockNumber": 9247588,
+      "totalSupplyRaw": "1505215058620996270431627",
+      "totalSupply": "1505215.058620996270431627",
+      "totalSupplyUSD": "1505215.058620996270431627",
+      "supplyAPR": "0.0722734140263904",
+      "grossSupplyRaw": "1495809221075834220226050",
+      "grossSupplyUSD": "1495809.22107583422022605",
+      "utilizationRate": "79.89",
+      "totalBorrowRaw": "1195052942362684319809684",
+      "totalBorrow": "1195052.942362684319809684",
+      "totalBorrowUSD": "1195052.942362684319809684",
+      "borrowAPR": "0.0923084705432736",
+      "oraclePrice": "7369196757553426",
+      "price": "1.00"
     },
     {
       "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Ether",
       "symbol": "WETH",
       "decimal": 18,
-      "blockNumber": 9160112,
-      "totalSupplyRaw": "25107117730666635275747",
-      "totalSupply": "25107.117730666635275747",
-      "totalSupplyUSD": "3122823.303340316237560959",
-      "supplyAPR": "0.0019464442497216",
-      "totalBorrowRaw": "2502219722037834154025",
-      "totalBorrow": "2502.219722037834154025",
-      "totalBorrowUSD": "311226.089027065826225967",
-      "borrowAPR": "0.0199307180104992",
+      "balance": "25061826310096502955137",
+      "blockNumber": 9250739,
+      "totalSupplyRaw": "25609517730666635275747",
+      "totalSupply": "25609.517730666635275747",
+      "totalSupplyUSD": "3475211.556051462725943288",
+      "supplyAPR": "0.0000907888915872",
+      "grossSupplyRaw": "25613078209426282291398",
+      "grossSupplyUSD": "3475694.713019146826011483",
+      "utilizationRate": "2.15",
+      "totalBorrowRaw": "551251899329779336261",
+      "totalBorrow": "551.251899329779336261",
+      "totalBorrowUSD": "74804.882739051062797705",
+      "borrowAPR": "0.0043044564552768",
       "oraclePrice": "1000000000000000000",
-      "price": "124380000000000005654"
+      "price": "135.700000000000012457"
     },
     {
       "asset": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "name": "Tether USD",
       "symbol": "USDT",
       "decimal": 6,
-      "blockNumber": 9169941,
-      "totalSupplyRaw": "853182047781",
-      "totalSupply": "853182.047781",
-      "totalSupplyUSD": "851607.279536158997068811",
-      "supplyAPR": "0.0708765744479616",
-      "totalBorrowRaw": "677537273038",
-      "totalBorrow": "677537.273038",
-      "totalBorrowUSD": "676286.702676080845382312",
-      "borrowAPR": "0.0911099802445632",
-      "oraclePrice": "8025038118931064000000000000",
-      "price": "998154241232645785696091806436"
+      "balance": "645612184525",
+      "blockNumber": 9251297,
+      "totalSupplyRaw": "2133915594164",
+      "totalSupply": "2133915.594164",
+      "totalSupplyUSD": "2127440.774415778220890698",
+      "supplyAPR": "0.0485324022914208",
+      "grossSupplyRaw": "2133397526555",
+      "grossSupplyUSD": "2126924.278750108519943004",
+      "utilizationRate": "69.73",
+      "totalBorrowRaw": "1487785342030",
+      "totalBorrow": "1487785.34203",
+      "totalBorrowUSD": "1483271.038868227242273062",
+      "borrowAPR": "0.0710128961095968",
+      "oraclePrice": "7346836819407404000000000000",
+      "price": "0.996965756393584814321456436931"
     },
     {
       "asset": "0x3212b29E33587A00FB1C83346f5dBFA69A458923",
+      "name": "The Tokenized Bitcoin",
       "symbol": "imBTC",
       "decimal": 8,
-      "blockNumber": 9169757,
-      "totalSupplyRaw": "9000000",
-      "totalSupply": "0.09",
-      "totalSupplyUSD": "645.608166560932032341",
-      "supplyAPR": "0.002421904334976",
-      "totalBorrowRaw": "1000500",
-      "totalBorrow": "0.010005",
-      "totalBorrowUSD": "71.770107849356944261",
-      "borrowAPR": "0.0222320982162528",
-      "oraclePrice": "576734529096256992900000000000",
-      "price": "71734240728992448037940583539996"
+      "balance": "17257122516",
+      "blockNumber": 9245177,
+      "totalSupplyRaw": "17261483914",
+      "totalSupply": "172.61483914",
+      "totalSupplyUSD": "1337434.833350348415548186",
+      "supplyAPR": "0.0000000627587424",
+      "grossSupplyRaw": "17266893174",
+      "grossSupplyUSD": "1337853.947534429721970119",
+      "utilizationRate": "0.05",
+      "totalBorrowRaw": "9770658",
+      "totalBorrow": "0.09770658",
+      "totalBorrowUSD": "757.039106200753752251",
+      "borrowAPR": "0.0001131725977632",
+      "oraclePrice": "570971793993376727180000000000",
+      "price": "7748.0872444901228991070090441932"
     }
   ],
-  "totalSupplyBalance": "43591.54875315287415181309463878830963442",
-  "totalSupplyBalanceUSD": "5421916.833917154733482851",
-  "totalBorrowBalance": "17548.107678001358448974879403073801649774",
-  "totalBorrowBalanceUSD": "2182633.63298980906310602",
-  "totalCollateralizationRatio": "2.484116780739844033",
-  "userCount": 130,
+  "totalSupplyBalance": "62235.093754153167704753550999113532604102",
+  "totalSupplyBalanceUSD": "8445302.2224385856328138",
+  "totalBorrowBalance": "20293.927067620951553618110326809782177384",
+  "totalBorrowBalanceUSD": "2753885.903076163378632703",
+  "totalCollateralizationRatio": "3.066685592531251828",
+  "userCount": 291,
   "collateralRatio": "1250000000000000000",
-  "liquidationDiscount": "100000000000000000",
-  "originationFee": "500000000000000"
+  "originationFee": "500000000000000",
+  "liquidationDiscount": "100000000000000000"
 }
 ```
 
@@ -154,6 +193,7 @@ none
 ### Liquidation history
 
 > Returns all liquidation history.
+
 
 **Url**
 
@@ -167,17 +207,19 @@ GET
 
 **Request Parameters**
 
-| Parameter | value                                | description                                                              |
-| --------- | ------------------------------------ | ------------------------------------------------------------------------ |
-| address   | User account address(default is all) | The acount you want to get liquidation history(case-insensitive letters) |
+| Parameter  | value                                | description                                                              |
+| ---------  | ------------------------------------ | ------------------------------------------------------------------------ |
+| address    | User account address(default is all) | The acount you want to get liquidation history(case-insensitive letters) |
+| pageNumber | Page number(default is 1) | The number of page to get                                                                                        |
+| pageSize   | Page size (default is 50)  | The total number of accounts list at the current page(the parameter cannot be zero and less than or equal to 50) |
 
 **Return Result**
 
-| field | type  | description                                                           |
-| ----- | ----- | --------------------------------------------------------------------- |
-| data  | array | Liquidate information list                                            |
-| size  | int   | Total number of liquidation history for a user(default for all users) |
-| total | int   | Total number of liquidation history for all users                     |
+| field   | type   | description                                                           |
+| -----   | -----  | --------------------------------------------------------------------- |
+| data    | array  | Liquidate information list                                            |
+| request | object | The size of liquidate data                                            |
+
 
 **_data_**
 
@@ -195,6 +237,7 @@ GET
 | name                     | type   | description                                                           |
 | ------------------------ | ------ | --------------------------------------------------------------------- |
 | asset                    | string | Asset address borrowed by liquidated user                             |
+| name                     | string | The name of the asset                                                 |
 | symbol                   | string | The symbol of the asset                                               |
 | decimal                  | int    | The number of decimals used for the asset                             |
 | borrowBalanceBefore      | string | Borrowing amount before liquidation                                   |
@@ -207,12 +250,22 @@ GET
 | name                         | type   | description                                                             |
 | ---------------------------- | ------ | ----------------------------------------------------------------------- |
 | asset                        | string | Asset address supplied by liquidated user                               |
+| name                         | string | The name of the asset                                                   |
 | symbol                       | string | The symbol of the asset                                                 |
 | decimal                      | int    | The number of decimals used for the asset                               |
 | collateralBalanceBefore      | string | Supply amount before liquidation address                                |
 | collateralBalanceAccumulated | string | Total amount of principal and interest of the supply before liquidation |
 | amountSeized                 | string | The number of collateral seized by liquidator                           |
 | collateralBalanceAfter       | string | Supply amount after liquidation                                         |
+
+**_request_**
+
+| field           | type | description                               |
+| --------------- | ---- | --------------------------------------    |
+| pageSize        | int  | Current page size                         |
+| pageNumber      | int  | Current page number                       |
+| totalSize       | int  | Total number of liquidation history lists |
+| totalPageNumber | int  | Total number of pages by page size        |
 
 **Example**
 
@@ -226,42 +279,58 @@ GET
 {
   "data": [
     {
-      "transactionHash": "0x5782dbc0bdc750b2ce2f1e5b999af84b3e38049e60bca9b8967354548d5527f1",
-      "blockNumber": 9154419,
-      "targetAccount": "0x1Ff27A24A83AF6f99F1108f0E59946b183D63C96",
+      "transactionHash": "0xc2a1b0d2cacbd02a120c7959985d553679868d1821dadb97fe8b209df614e95e",
+      "blockNumber": 9236926,
+      "targetAccount": "0xdA1d0C7f174effBA98Ea1E31424418DC9aeaEa22",
       "liquidator": "0x932906251479106D96904184aA4985C1a291B35d",
       "assetBorrow": {
-        "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
-        "symbol": "USDx",
-        "decimal": 18,
-        "borrowBalanceBefore": "0.001159121818411891",
-        "borrowBalanceAccumulated": "0.001188125250888974",
-        "amountRepaid": "0.000953282337615487",
-        "borrowBalanceAfter": "0.000234842913273487"
+        "asset": "0x3212b29E33587A00FB1C83346f5dBFA69A458923",
+        "name": "The Tokenized Bitcoin",
+        "symbol": "imBTC",
+        "decimal": 8,
+        "borrowBalanceBefore": "0.09779123",
+        "borrowBalanceAccumulated": "0.09779127",
+        "amountRepaid": "0.01897006",
+        "borrowBalanceAfter": "0.07882121"
       },
       "assetCollateral": {
-        "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        "symbol": "WETH",
-        "decimal": 18,
-        "collateralBalanceBefore": "0.000008456554990961",
-        "collateralBalanceAccumulated": "0.000008456652785258",
-        "amountSeized": "0.000008182681009574",
-        "collateralBalanceAfter": "0.000000273971775684"
+        "asset": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "decimal": 6,
+        "collateralBalanceBefore": "1009.133987",
+        "collateralBalanceAccumulated": "1009.137477",
+        "amountSeized": "176.372465",
+        "collateralBalanceAfter": "832.765012"
       }
-    },
+    }
   ],
-  "size": 1,
-  "total": 1
+  "request": {
+    "pageSize": 1,
+    "pageNumber": 1,
+    "totalSize": 1,
+    "totalPageNumber": 1
+  }
 }
 ```
 
 **Error message**
 
-> none
+```
+Returns error message
+```
+
+| Error name | Error message                     | Error parameter | description                                    |
+| ---------- | --------------------------------- | --------------- | ---------------------------------------------- |
+| Error      | targetAccount Parameter error!!   | targetAccount   | The input parameter is not an Ethereum address |
+| Error      | assetBorrow Parameter error!!     | assetBorrow     | The input parameter is not an Ethereum address |
+| Error      | assetCollateral Parameter error!! | assetCollateral | The input parameter is not an Ethereum address |
 
 ### List borrowed accounts
 
+
 > Get accounts list have borrowed asset.
+
 
 **Url**
 
@@ -306,6 +375,7 @@ GET
 | name        | type   | description                               |
 | ----------- | ------ | ----------------------------------------- |
 | asset       | string | Borrowing asset address                   |
+| name        | string | The name of the asset                     |
 | symbol      | string | The symbol of the asset                   |
 | decimal     | int    | The number of decimals used for the asset |
 | oraclePrice | string | The asset price got from contract         |
@@ -318,6 +388,7 @@ GET
 | name        | type   | description                               |
 | ----------- | ------ | ----------------------------------------- |
 | asset       | string | Suppling asset address                    |
+| name        | string | The name of the asset                     |
 | symbol      | string | The symbol of the asset                   |
 | decimal     | int    | The number of decimals used for the asset |
 | oraclePrice | string | The asset price got from contract         |
@@ -347,43 +418,45 @@ GET
 {
   "accounts": [
     {
-      "address": "0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA",
-      "totalSupplyWeth": "0.00000000000014923",
-      "totalSupplyUSD": "0.000000000018561227",
-      "totalBorrowWeth": "0.000012738548793649074834959278224376",
-      "totalBorrowUSD": "0.001584420698954072",
-      "shortfallWeth": "0.00001592318584283134354369909778047",
-      "collateralRate": 1.1714835215326886e-8,
+      "address": "0x2f04a067bedcC3a8fce349cB1bb234c17c4a83e2",
+      "totalSupplyWeth": "0.004664242210516262133056",
+      "totalSupplyUSD": "0.632937667967056829",
+      "totalBorrowWeth": "0.003744252050767163967257764908328922",
+      "totalBorrowUSD": "0.508095003289104197",
+      "shortfallWeth": "0.000016072852942692826016206135411152",
+      "collateralRate": 1.245707326129554,
       "borrow": [
         {
           "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
+          "name": "dForce",
           "symbol": "USDx",
           "decimal": 18,
-          "oraclePrice": "0.008039877793857533",
-          "amount": "0.001584420698954072",
-          "USDValue": "0.001584420698954072",
+          "oraclePrice": "0.007369196757553426",
+          "amount": "0.508095003289104197",
+          "USDValue": "0.508095003289104197",
           "price": "1.00"
         }
       ],
       "supply": [
         {
-          "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-          "symbol": "WETH",
-          "decimal": 18,
-          "oraclePrice": "1.00",
-          "amount": "0.00000000000014923",
-          "USDValue": "0.000000000018561227",
-          "price": "124.380000000000005654"
+          "asset": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "name": "Tether USD",
+          "symbol": "USDT",
+          "decimal": 6,
+          "oraclePrice": "0.007346836819407404",
+          "amount": "0.634864",
+          "USDValue": "0.632937667967056829",
+          "price": "0.996965756393584814321456436931"
         }
       ]
-    },
+    }
   ],
   "request": {
-    "blockNumber": 9169935,
-    "pageSize": 50,
+    "blockNumber": 9251631,
+    "pageSize": 1,
     "pageNumber": 1,
-    "totalSize": 1,
-    "totalPageNumber": 1
+    "totalSize": 33,
+    "totalPageNumber": 33
   }
 }
 ```
@@ -402,7 +475,7 @@ GET
 
 **Url**
 
-> [https://api.lendf.me/v1/liquidate?targetAccount= 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow= 0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral= 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2](https://api.lendf.me/v1/liquidate?targetAccount= 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow= 0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral= 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
+> [https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2](https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
 
 **Request Method**
 
@@ -432,6 +505,7 @@ GET
 
 | name        | type   | description                               |
 | ----------- | ------ | ----------------------------------------- |
+| name        | string | The name of the asset                     |
 | symbol      | string | The symbol of the asset                   |
 | decimal     | int    | The number of decimals used for the asset |
 | oraclePrice | string | The asset price got from contract         |
@@ -444,6 +518,7 @@ GET
 
 | name        | type   | description                               |
 | ----------- | ------ | ----------------------------------------- |
+| name        | string | The name of the asset                     |
 | symbol      | string | The symbol of the asset                   |
 | decimal     | int    | The number of decimals used for the asset |
 | oraclePrice | string | The asset price got from contract         |
@@ -462,26 +537,28 @@ GET
 
 ```
 {
-  "targetAccount": "0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA",
-  "assetBorrow": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
-  "assetCollateral": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+  "targetAccount": "0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea",
+  "assetBorrow": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+  "assetCollateral": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
   "maxClose": {
-    "symbol": "USDx",
-    "decimal": 18,
-    "oraclePrice": "8039877793857533",
-    "amountRaw": "16873843",
-    "amount": "0.000000000016873843",
-    "USDValue": "0.000000000016873843",
-    "price": "1.00"
-  },
-  "amountSeize": {
+    "name": "Wrapped Ether",
     "symbol": "WETH",
     "decimal": 18,
     "oraclePrice": "1000000000000000000",
-    "amountRaw": "149229",
-    "amount": "0.000000000000149229",
-    "USDValue": "0.000000000018561103",
-    "price": "124.380000000000005654"
+    "amountRaw": "0",
+    "amount": "0.00",
+    "USDValue": "0.00",
+    "price": "135.700000000000012457"
+  },
+  "amountSeize": {
+    "name": "dForce",
+    "symbol": "USDx",
+    "decimal": 18,
+    "oraclePrice": "7369196757553426",
+    "amountRaw": "0",
+    "amount": "0.00",
+    "USDValue": "0.00",
+    "price": "1.00"
   }
 }
 ```
