@@ -12,24 +12,24 @@ __MainNet:__
 
 ```
 moneyMarket: 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea
-liquidator : 0x932906251479106D96904184aA4985C1a291B35d
+liquidator : 0x8AC3435FD089410A65c0e727ceD5A9843F5492F2
 ```
 
 __Rinkeby:__
 
 ```
 moneyMarket: 0x2FD380b99E0c6ff16F569FB8214b40509F776764
-liquidator : 0x8E8627FC8e2359fDc9492540D646c3F4d979A44A
+liquidator : 0x3d01aa8879e1dce78574090fee75adafab690a23
 ```
 
-_Notice: In order to support USDx contract, we make a little change in the Liquidator contract(line: 2796):_
+_Notice: In order to support USDx nad USDT assets, we make a little change in the Liquidator contract(line: 2796):_
 
 ```js
     function tokenAllowAll(address asset, address allowee) internal {
         EIP20Interface token = EIP20Interface(asset);
 
         if (token.allowance(address(this), allowee) != uint(-1)) // <--------Here!
-            require(token.approve(allowee, uint(-1)), "FAILED_LIQUIDATE_ASSET_ALLOWANCE_FAILED");
+            require(doApprove(asset, allowee, uint(-1)) == Error.NO_ERROR, "FAILED_LIQUIDATE_ASSET_ALLOWANCE_FAILED");
     }
 ```
 
@@ -53,6 +53,7 @@ For the contract of `lendf.me`, user account and related information are stored 
       "borrow": [
         {
           "asset": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
+          "name": "dForce",
           "symbol": "USDx",
           "decimal": 18,
           "oraclePrice": "0.008039877793857533",
@@ -64,6 +65,7 @@ For the contract of `lendf.me`, user account and related information are stored 
       "supply": [
         {
           "asset": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "name": "Wrapped Ether",
           "symbol": "WETH",
           "decimal": 18,
           "oraclePrice": "1.00",
@@ -108,6 +110,7 @@ you will get data like below:
   "assetBorrow": "0xeb269732ab75A6fD61Ea60b06fE994cD32a83549",
   "assetCollateral": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   "maxClose": {
+    "name": "dForce",
     "symbol": "USDx",
     "decimal": 18,
     "oraclePrice": "8039877793857533",
@@ -117,6 +120,7 @@ you will get data like below:
     "price": "1.00"
   },
   "amountSeize": {
+    "name": "Wrapped Ether",
     "symbol": "WETH",
     "decimal": 18,
     "oraclePrice": "1000000000000000000",
@@ -136,6 +140,7 @@ requestAmount = min(borrowAmount, collateralAmount, Math.floor(liquidateAmountWE
 ```
 _You can get liquidationDiscount，collateralRatio，assetBorrowPrice from a public API：[https://api.lendf.me/v1/info?data=markets](https://api.lendf.me/v1/info?data=markets)_
 
+There are three methods for liquidation:
 
 - 1) You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x932906251479106D96904184aA4985C1a291B35d(mainnet)`, and then call the function which is mentioned above.
 
