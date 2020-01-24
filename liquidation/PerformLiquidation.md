@@ -142,7 +142,7 @@ _You can get liquidationDiscount，collateralRatio，assetBorrowPrice from a pub
 
 There are three methods for liquidation:
 
-- 1 You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x932906251479106D96904184aA4985C1a291B35d(mainnet)`, and then call the function which is mentioned above.
+- 1 You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x8AC3435FD089410A65c0e727ceD5A9843F5492F2(mainnet)`, and then call the function which is mentioned above.
 
 - 2 You can use the popular JavaScript library [web3](https://github.com/ethereum/web3.js/) to call the contract function directly, you can also choose other scripting language.
 
