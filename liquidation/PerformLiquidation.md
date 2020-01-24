@@ -22,7 +22,7 @@ moneyMarket: 0x2FD380b99E0c6ff16F569FB8214b40509F776764
 liquidator : 0x3d01aa8879e1dce78574090fee75adafab690a23
 ```
 
-_Notice: In order to support USDx nad USDT assets, we make a little change in the Liquidator contract(line: 2796):_
+_Notice: In order to support USDx and USDT assets, we make a little change in the Liquidator contract(line: 2796):_
 
 ```js
     function tokenAllowAll(address asset, address allowee) internal {
