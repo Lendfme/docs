@@ -18,7 +18,7 @@ liquidator : 0x8AC3435FD089410A65c0e727ceD5A9843F5492F2
 __Rinkeby:__
 
 ```
-moneyMarket: 0x2FD380b99E0c6ff16F569FB8214b40509F776764
+moneyMarket: 0xdcfd113789ef683f676435fff90b953a0cc76044
 liquidator : 0x3d01aa8879e1dce78574090fee75adafab690a23
 ```
 
@@ -142,11 +142,11 @@ _You can get liquidationDiscount，collateralRatio，assetBorrowPrice from a pub
 
 There are three methods for liquidation:
 
-- 1) You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x932906251479106D96904184aA4985C1a291B35d(mainnet)`, and then call the function which is mentioned above.
+- 1 You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x932906251479106D96904184aA4985C1a291B35d(mainnet)`, and then call the function which is mentioned above.
 
-- 2) You can use the popular JavaScript library [web3](https://github.com/ethereum/web3.js/) to call the contract function directly, you can also choose other scripting language.
+- 2 You can use the popular JavaScript library [web3](https://github.com/ethereum/web3.js/) to call the contract function directly, you can also choose other scripting language.
 
-- 3) You can visit [https://monitor.lendf.me](https://monitor.lendf.me), then liquidate on the website, but you need to install extension MetaMask at first.
+- 3 You can visit [https://monitor.lendf.me](https://monitor.lendf.me), then liquidate on the website, but you need to install extension MetaMask at first.
 
 ### Step3: Check the `liquidateBorrow()` return value
 
