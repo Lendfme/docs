@@ -48,9 +48,7 @@ Pull Requests are the way in which concrete changes are made to the code and doc
 
 ### Prerequisites
 
-You must install [pre-commit](https://pre-commit.com/#install) in order to enable our precommit hooks and pre-commit install from your Lendfme/xx root directory.
-
-In order to make use of the `pre-commit` hooks used for this repository, you should have a valid installation of `node/npm`, and `eslint` (`npm install -g eslint`).
+You must have a valid installation of `node/npm` to run the code, and `eslint` (`npm install -g eslint`) to find and fix writing style problems in our code.
 
 At here, we use the repo `oraclesystem` as an example:
 
@@ -85,7 +83,7 @@ To keep the style of the Javascript code consistent we have a basic linting conf
 
 <h3 id='commit'> Step 4: Commit </h3>
 
-1. Ensure your code changes adhere to our styling and linting standards: `npm run lint:fix` 
+1. Ensure your code changes adhere to our styling and linting standards: `npm run lint:fix`
 2. List all your changes as a list if needed else simply give a brief description on what the changes are.
 3. All lines at 100 columns.
 4. If your PR fixed an issue, Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
@@ -99,9 +97,9 @@ To keep the style of the Javascript code consistent we have a basic linting conf
 
  ```
  - if you can write down the changes explaining it in a paragraph which each line wrapped within 100 lines.
- - list out your changes as points if there are many changes, 
+ - list out your changes as points if there are many changes,
  - if needed you can also send it across as all wrapped within 100 lines
- 
+
  Fixes: https://github.com/Lendfme/oraclesystem/issues/10
  Refs: https://github.com/Lendfme/oraclesystem/issues/23
  ```
