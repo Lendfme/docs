@@ -12,25 +12,14 @@ __MainNet:__
 
 ```
 moneyMarket: 0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea
-liquidator : 0x8AC3435FD089410A65c0e727ceD5A9843F5492F2
+liquidator : 0x9893292300c4e530a14FB2526271732a2a9b3f05
 ```
 
 __Rinkeby:__
 
 ```
-moneyMarket: 0xdcfd113789ef683f676435fff90b953a0cc76044
-liquidator : 0x3d01aa8879e1dce78574090fee75adafab690a23
-```
-
-_Notice: In order to support USDx and USDT assets, we make a little change in the Liquidator contract(line: 2796):_
-
-```js
-    function tokenAllowAll(address asset, address allowee) internal {
-        EIP20Interface token = EIP20Interface(asset);
-
-        if (token.allowance(address(this), allowee) != uint(-1)) // <--------Here!
-            require(doApprove(asset, allowee, uint(-1)) == Error.NO_ERROR, "FAILED_LIQUIDATE_ASSET_ALLOWANCE_FAILED");
-    }
+moneyMarket: 0xDCfD113789Ef683f676435fFf90B953A0Cc76044
+liquidator : 0x84E81B87D1736D2E2Be5dB591326E29F8458c63C
 ```
 
 ## Liquidation
@@ -100,7 +89,7 @@ function liquidateBorrow(
 
 _**Notice:The asset that user wants to liquidate must approve to the `Liquidator.sol` contract at first.**_
 
-You can get `requestedAmountClose` by visiting our public API with variables `targetAccount`, `assetBorrow`, `assetCollateral`, such as: [https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&assetCollateral=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549](https://api.lendf.me/v1/liquidate?targetAccount=0x0eEe3E3828A45f7601D5F54bF49bB01d1A9dF5ea&assetBorrow=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&assetCollateral=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549)
+You can get `requestedAmountClose` by visiting our public API with variables `targetAccount`, `assetBorrow`, `assetCollateral`, such as: [https://api.lendf.me/v1/liquidate?targetAccount=0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA&assetBorrow=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2](https://api.lendf.me/v1/liquidate?targetAccount=0xEe7e46D15DF85D113D4f8B80A4d748c20Fa625AA&assetBorrow=0xeb269732ab75A6fD61Ea60b06fE994cD32a83549&assetCollateral=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
 
 you will get data like below:
 
@@ -142,7 +131,7 @@ _You can get liquidationDiscount，collateralRatio，assetBorrowPrice from a pub
 
 There are three methods for liquidation:
 
-- 1 You can copy the contract [Liquidator.sol](https://github.com/Lendfme/front_end_sc/blob/master/contracts/Liquidator.sol) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x8AC3435FD089410A65c0e727ceD5A9843F5492F2(mainnet)`, and then call the function which is mentioned above.
+- 1 You can copy the contract [Liquidator.sol](https://etherscan.io/address/0x9893292300c4e530a14fb2526271732a2a9b3f05#contracts) and open it on the [Remix](https://remix.ethereum.org), initialize the contract by the contract address`0x9893292300c4e530a14fb2526271732a2a9b3f05(mainnet)`, and then call the function which is mentioned above.
 
 - 2 You can use the popular JavaScript library [web3](https://github.com/ethereum/web3.js/) to call the contract function directly, you can also choose other scripting language.
 
