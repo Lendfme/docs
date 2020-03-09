@@ -1,7 +1,3 @@
-_**Notice: Our API document is still being edited, so if you want to use our API, please pay attention to our changes, the final stable version will be determined in 50 days from now on(20th Dec,2019)，that is around 10th Feb,2020.**_
-
-<hr>
-
 ## LendfMe API Document
 
 ### Introduction
